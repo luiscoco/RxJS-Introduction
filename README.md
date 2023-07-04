@@ -330,6 +330,55 @@ As you can observe, each subscriber receives the values emitted by the observabl
 
 ## Observables: multicast (hot)
 
+In JavaScript, observables are a key concept in reactive programming and are often used in frameworks like RxJS. Observables represent streams of data over time, allowing you to subscribe to them and react to any values emitted by the stream. One type of observable is the multicast observable, specifically the "hot" multicast observable.
+
+A multicast observable can have multiple subscribers, and it emits the same sequence of values to all subscribers simultaneously. This means that when a value is emitted by the source observable, all subscribers receive that value at the same time. This is in contrast to a "cold" observable, where each subscriber receives a separate instance of the stream.
+
+Here's a simple example to illustrate the concept of a hot multicast observable in JavaScript using RxJS:
+
+```javascript
+// Import the necessary RxJS functions
+import { Subject } from 'rxjs';
+
+// Create a new Subject
+const multicastObservable = new Subject();
+
+// Emit values to the observable
+multicastObservable.next('Value 1');
+multicastObservable.next('Value 2');
+
+// Create subscribers
+const subscriber1 = multicastObservable.subscribe(value => {
+  console.log(`Subscriber 1 received: ${value}`);
+});
+
+const subscriber2 = multicastObservable.subscribe(value => {
+  console.log(`Subscriber 2 received: ${value}`);
+});
+
+// Emit another value
+multicastObservable.next('Value 3');
+```
+
+In this example, we first import the Subject class from the RxJS library. A Subject is a type of multicast observable. We create a new Subject called multicastObservable.
+
+Next, we emit some values to the multicastObservable using the next method. Both subscribers, subscriber1 and subscriber2, are already created and subscribed to the observable.
+
+When we emit the values, both subscribers receive the same sequence of values simultaneously. In this case, the console output would be:
+
+Subscriber 1 received: Value 1
+
+Subscriber 2 received: Value 1
+
+Subscriber 1 received: Value 2
+
+Subscriber 2 received: Value 2
+
+Subscriber 1 received: Value 3
+
+Subscriber 2 received: Value 3
+
+As you can see, both subscribers receive all the emitted values. This demonstrates the concept of a hot multicast observable in JavaScript.
 
 
 ## promises: eager
