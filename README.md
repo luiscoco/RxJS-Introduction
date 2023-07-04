@@ -98,28 +98,40 @@ The third argument is an optional complete callback, which is called when the ob
 Finally, we use setTimeout to unsubscribe from the observable after 3 seconds by calling subscription.unsubscribe(). This stops the emission of further values and cleans up any resources used by the observable.
 
 
-promises: multicast
+## promises: multicast
 
-observables: unicast (cold), multicast (hot)
-
-promises: eager
-
-observables: lazy (cold), eager (hot)
-
-promises: not cancelable
-
-observables: cancelable with unsubscribe
-
-promises: always asynchronous (then callback is added to microtask queue)
-
-observables: maybe asyncronous or syncronous, depending on body of producer function (which calls next())
-
-observables have operators!
-*/
+## observables: unicast (cold), multicast (hot)
 
 
 
-/*
+
+
+
+## promises: eager
+
+## observables: lazy (cold), eager (hot)
+
+
+
+
+
+## promises: not cancelable
+
+## observables: cancelable with unsubscribe
+
+
+
+
+
+## promises: always asynchronous (then callback is added to microtask queue)
+
+## observables: maybe asyncronous or syncronous, depending on body of producer function (which calls next())
+
+
+
+
+## observables have operators!
+
 
 unicast 1 to 1
 
