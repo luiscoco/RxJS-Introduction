@@ -16,6 +16,7 @@ Observables function/s could be executed several times.
 /* Differences:
 
 promises: single value
+
 observables: multiple values
 
 promises: multicast
