@@ -543,6 +543,29 @@ C 2
 
 C 3
 
+This is the equivalent code withe "Observable" and "Observer" keywords:
+
+```javascript
+import { combineLatest, Observable, Observer, of } from 'rxjs';
+
+const source1: Observable<string> = of('A', 'B', 'C');
+const source2: Observable<number> = of(1, 2, 3);
+
+const observer: Observer<[string, number]> = {
+  next: ([value1, value2]) => {
+    console.log(value1, value2);
+  },
+  error: (error) => {
+    console.error('An error occurred:', error);
+  },
+  complete: () => {
+    console.log('Observation completed');
+  },
+};
+
+combineLatest(source1, source2).subscribe(observer);
+```
+
 ### filter: 
 Filters the values emitted by an observable based on a predicate function and only emits the values that satisfy the condition.
 
