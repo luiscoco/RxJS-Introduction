@@ -9,6 +9,55 @@ https://thinkrx.io/rxjs/
 
 https://indepth.dev/reference/rxjs/operators/merge
 
+# Promises:
+In JavaScript, a promise is an object that represents the eventual completion or failure of an asynchronous operation. It is commonly used when working with asynchronous code, such as fetching data from a server or performing an operation that takes time to complete. Promises provide a way to handle the result of an asynchronous operation when it becomes available.
+
+A promise can be in one of three states:
+
+Pending: The initial state of a promise. The asynchronous operation has not completed yet.
+Fulfilled: The promise has been resolved successfully with a result value.
+Rejected: The promise has encountered an error or failure and has been rejected with a reason for the failure.
+Promises have two main methods for handling the result or error of an asynchronous operation:
+
+then(): This method is used to handle the successful fulfillment of a promise. It takes two arguments: a callback function to be executed when the promise is fulfilled, and an optional callback function to handle errors.
+
+```javascript
+promise.then(onFulfilled, onRejected);
+```
+catch(): This method is used to handle errors or rejections in a promise chain. It is similar to providing a rejection callback to the then() method, but it only handles errors and does not handle successful fulfillment.
+
+```javascript
+promise.catch(onRejected);
+```
+
+Here's an example code snippet that demonstrates the usage of a promise and how to subscribe to it:
+
+```javascript
+// Create a promise that resolves after a certain delay
+const delayPromise = (delay) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Promise resolved after ' + delay + ' milliseconds');
+    }, delay);
+  });
+};
+
+// Use the promise and subscribe to its result
+const promise = delayPromise(2000); // Resolves after 2 seconds
+
+console.log('Before promise subscription');
+
+promise
+  .then((result) => {
+    console.log('Promise resolved:', result);
+  })
+  .catch((error) => {
+    console.log('Promise rejected:', error);
+  });
+
+console.log('After promise subscription');
+```
+
 # Observables:
 Observables represent a stream of values over time. They can be either cold or hot, depending on how the values are produced and consumed.
 
