@@ -517,9 +517,10 @@ To summarize, promises are eager because they execute as soon as they are create
 
 ## observables have operators!
 
-combineLatest: Combines multiple observables and emits an array containing the latest values from each observable whenever any of the source observables emit a new value.
-javascript
-Copy code
+### combineLatest: 
+Combines multiple observables and emits an array containing the latest values from each observable whenever any of the source observables emit a new value.
+
+```javascript
 import { combineLatest, of } from 'rxjs';
 
 const source1 = of('A', 'B', 'C');
@@ -528,18 +529,24 @@ const source2 = of(1, 2, 3);
 combineLatest(source1, source2).subscribe(([value1, value2]) => {
   console.log(value1, value2);
 });
+```
+
 Output:
 
-css
-Copy code
 A 1
+
 B 1
+
 B 2
+
 C 2
+
 C 3
-filter: Filters the values emitted by an observable based on a predicate function and only emits the values that satisfy the condition.
-javascript
-Copy code
+
+### filter: 
+Filters the values emitted by an observable based on a predicate function and only emits the values that satisfy the condition.
+
+```javascript
 import { of } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
@@ -548,14 +555,18 @@ const source = of(1, 2, 3, 4, 5);
 source.pipe(filter(value => value % 2 === 0)).subscribe(value => {
   console.log(value);
 });
+```
+
 Output:
 
-Copy code
 2
+
 4
-from: Converts an array, an iterable, a Promise, or an observable-like object into an observable sequence.
-javascript
-Copy code
+
+### from: 
+Converts an array, an iterable, a Promise, or an observable-like object into an observable sequence.
+
+```javascript
 import { from } from 'rxjs';
 
 const array = [1, 2, 3];
@@ -564,15 +575,20 @@ const source = from(array);
 source.subscribe(value => {
   console.log(value);
 });
+```
+
 Output:
 
-Copy code
 1
+
 2
+
 3
-fromEvent: Creates an observable that emits events from a specified event target, such as DOM events in the browser or events from Node.js's EventEmitter.
-javascript
-Copy code
+
+### fromEvent: 
+Creates an observable that emits events from a specified event target, such as DOM events in the browser or events from Node.js's EventEmitter.
+
+```javascript
 import { fromEvent } from 'rxjs';
 
 const button = document.querySelector('button');
@@ -581,14 +597,16 @@ const source = fromEvent(button, 'click');
 source.subscribe(() => {
   console.log('Button clicked!');
 });
+```
+
 Output:
 
-csharp
-Copy code
 Button clicked! (when the button is clicked)
-interval: Creates an observable that emits sequential numbers at a specified interval.
-javascript
-Copy code
+
+### interval: 
+Creates an observable that emits sequential numbers at a specified interval.
+
+```javascript
 import { interval } from 'rxjs';
 
 const source = interval(1000);
@@ -596,19 +614,26 @@ const source = interval(1000);
 source.subscribe(value => {
   console.log(value);
 });
+```
+
 Output:
 
-python
-Copy code
 0
+
 1
+
 2
+
 3
+
 4
+
 ... (continues indefinitely every second)
-map: Applies a projection function to each value emitted by the source observable and emits the projected values as a new observable.
-javascript
-Copy code
+
+## map:
+Applies a projection function to each value emitted by the source observable and emits the projected values as a new observable.
+
+```javascript
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -617,15 +642,20 @@ const source = of(1, 2, 3);
 source.pipe(map(value => value * 2)).subscribe(value => {
   console.log(value);
 });
+```
+
 Output:
 
-Copy code
 2
+
 4
+
 6
-of: Emits the specified values as individual emissions and then completes.
-javascript
-Copy code
+
+### of:
+Emits the specified values as individual emissions and then completes.
+
+```javascript
 import { of } from 'rxjs';
 
 const source = of('A', 'B', 'C');
@@ -633,6 +663,8 @@ const source = of('A', 'B', 'C');
 source.subscribe(value => {
   console.log(value);
 });
+```
+
 Output:
 
 css
