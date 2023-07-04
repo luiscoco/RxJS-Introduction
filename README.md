@@ -18,7 +18,7 @@ A cold observable starts producing values only when a subscription is made, and 
 ## Hot Observable:
 A hot observable starts producing values immediately, regardless of subscriptions. All subscribers share the same stream of values.
 
-# These are the main differences between Promises and Observable:
+# Differences between Promises and Observable:
 
 ## Example with Promises (Single Value):
 Let's say you want to simulate an asynchronous operation that fetches a user's data from a server using a promise. Here's an example:
