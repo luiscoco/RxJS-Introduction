@@ -411,7 +411,7 @@ fetchData()
 console.log('After fetching data');
 ```
 
-
+In this example, the fetchData function returns a promise that resolves with some sample data after a 2-second delay. The promise starts executing as soon as it is created. The console.log statements before and after the fetchData call are executed immediately, without waiting for the promise to resolve. Once the promise resolves, the then block is executed, printing the fetched data.
 
 ## Observables: lazy (cold), eager (hot)
 
