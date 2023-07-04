@@ -299,16 +299,22 @@ We then create two subscribers: Subscriber 1 and Subscriber 2. Subscriber 1 subs
 
 When you run this code, you will see the following output:
 
-mathematica
-Copy code
 Subscriber 1 received: Value 1
+
 Subscriber 1 received: Value 2
+
 Subscriber 1 received: Value 3
+
 Subscriber 1 completed
+
 Subscriber 2 received: Value 1
+
 Subscriber 2 received: Value 2
+
 Subscriber 2 received: Value 3
+
 Subscriber 2 completed
+
 As you can observe, each subscriber receives the values emitted by the observable independently, and they both receive the complete notification when the observable is completed. This demonstrates the unicast (cold) behavior of the observable.
 
 ## Observables: multicast (hot)
