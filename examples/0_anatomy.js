@@ -1,12 +1,28 @@
 import { Observable } from 'rxjs';
 
 console.log(1);
-
-
 setTimeout(() => console.log(3), 4000);
-
-
 console.log(2);
+
+
+console.log(1);
+setTimeout(() => {
+	console.log(3);
+	console.log(2);
+	setTimeout(() => {
+		console.log(4);
+	}, 2000);
+}, 4000);
+
+const promise = new Promise((res, rej) => {
+	setTimeout(() => res('hello'), 2000);
+});
+
+promise.then((value) => {
+	console.log('fireworks');
+});
+
+
 
 // ~ no rxjs
 function noRxjsExample() {
