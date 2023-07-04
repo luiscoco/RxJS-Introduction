@@ -293,6 +293,24 @@ setTimeout(() => {
 }, 1500);
 ```
 
+In this example, we create a unicast (cold) observable using the Observable constructor from RxJS. The observable emits three values asynchronously with a delay of 1 second between each value. After emitting the third value, it completes the observable.
+
+We then create two subscribers: Subscriber 1 and Subscriber 2. Subscriber 1 subscribes immediately to the observable and starts receiving values. Subscriber 2 subscribes after a delay of 1.5 seconds. As a unicast observable, Subscriber 2 starts receiving values from the beginning, independent of Subscriber 1. Each subscriber has its own independent stream of data.
+
+When you run this code, you will see the following output:
+
+mathematica
+Copy code
+Subscriber 1 received: Value 1
+Subscriber 1 received: Value 2
+Subscriber 1 received: Value 3
+Subscriber 1 completed
+Subscriber 2 received: Value 1
+Subscriber 2 received: Value 2
+Subscriber 2 received: Value 3
+Subscriber 2 completed
+As you can observe, each subscriber receives the values emitted by the observable independently, and they both receive the complete notification when the observable is completed. This demonstrates the unicast (cold) behavior of the observable.
+
 ## Observables: multicast (hot)
 
 
