@@ -13,6 +13,27 @@ Promise function/s is only executed once.
 
 Observables function/s could be executed several times.
 
+/* Differences:
+promises: single value
+observables: multiple values
+
+promises: multicast
+observables: unicast (cold), multicast (hot)
+
+promises: eager
+observables: lazy (cold), eager (hot)
+
+promises: not cancelable
+observables: cancelable with unsubscribe
+
+promises: always asynchronous (then callback is added to microtask queue)
+observables: maybe asyncronous or syncronous, depending on body of producer function (which calls next())
+
+observables have operators!
+*/
+
+
+
 /*
 
 unicast 1 to 1
