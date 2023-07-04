@@ -9,12 +9,16 @@ https://thinkrx.io/rxjs/
 
 https://indepth.dev/reference/rxjs/operators/merge
 
+# Observables:
+Observables represent a stream of values over time. They can be either cold or hot, depending on how the values are produced and consumed.
+
+## Cold Observable:
+A cold observable starts producing values only when a subscription is made, and each subscriber receives its own independent stream of values.
+
+## Hot Observable:
+A hot observable starts producing values immediately, regardless of subscriptions. All subscribers share the same stream of values.
 
 # These are the main differences between Promises and Observable:
-
-promises: single value
-
-observables: multiple values
 
 ## Example with Promises (Single Value):
 Let's say you want to simulate an asynchronous operation that fetches a user's data from a server using a promise. Here's an example:
@@ -99,6 +103,39 @@ Finally, we use setTimeout to unsubscribe from the observable after 3 seconds by
 
 
 ## promises: multicast
+In JavaScript, Promise multicast refers to a technique where a single Promise instance is shared among multiple consumers. This allows multiple subscribers to wait for the resolution of a Promise without triggering redundant network requests or expensive computations.
+
+By default, when you chain multiple .then() callbacks onto a Promise, each callback creates a new Promise instance. This means that if you have multiple subscribers listening for the resolution of a Promise, each subscriber triggers a separate execution path, potentially resulting in redundant operations.
+
+To implement Promise multicast, you can create a custom class that manages the Promise instance and its subscribers. Here's a simple example of implementing Promise multicast in JavaScript:
+
+```javascript
+class PromiseMulticast {
+  constructor(promiseFn) {
+    this.promise = new Promise(promiseFn);
+    this.subscribers = new Set();
+    this.result = null;
+
+    this.promise.then(result => {
+      this.result = result;
+      for (const subscriber of this.subscribers) {
+        subscriber(result);
+      }
+    });
+  }
+
+  then(callback) {
+    if (this.result !== null) {
+      callback(this.result);
+    } else {
+      this.subscribers.add(callback);
+    }
+    return this;
+  }
+}
+```
+
+
 
 ## observables: unicast (cold), multicast (hot)
 
