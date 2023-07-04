@@ -9,6 +9,10 @@ https://thinkrx.io/rxjs/
 https://indepth.dev/reference/rxjs/operators/merge
 
 
+Promise function/s is only executed once.
+
+Observables function/s could be executed several times.
+
 /*
 
 unicast 1 to 1
