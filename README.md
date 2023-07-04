@@ -1,4 +1,7 @@
-# RxJS-Sample1
+# RxJS-Introduction
+
+This is the official RxJS site web page: https://rxjs.dev/guide/observable
+
 These are very important links for learning RxJS library:
 
 https://rxjs-playground.github.io/#/?html=&js=%2F%2F%20A%20simple%20illustration%20to%20count%20to%203.%0ARx.Observable.interval%281000%29.take%283%29.subscribe%28v%20%3D%3E%20console.log%28v%29%29%0A%20%20%20%20
@@ -9,7 +12,15 @@ https://thinkrx.io/rxjs/
 
 https://indepth.dev/reference/rxjs/operators/merge
 
-# Note: 
+# Note 1: 
+Observables are lazy Push collections of multiple values. They fill the missing spot in the following table:
+```
+        SINGLE       MULTIPLE
+Pull	Function     Iterator
+Push	Promise	     Observable
+```
+
+# Note 2: 
 unicast 1 to 1
 
 multicast 1 to many
