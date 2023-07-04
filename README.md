@@ -49,6 +49,33 @@ subscription1.unsubscribe();
 ## Hot Observable:
 A hot observable starts producing values immediately, regardless of subscriptions. All subscribers share the same stream of values.
 
+```javascript
+import { Subject } from 'rxjs';
+
+// Creating a hot observable
+const hotObservable = new Subject();
+
+// Producing values for the hot observable
+let count = 0;
+setInterval(() => {
+  hotObservable.next(count);
+  count++;
+}, 1000);
+
+// Subscribing to the hot observable (first subscriber)
+const subscription1 = hotObservable.subscribe(value => {
+  console.log('Subscriber 1 received:', value);
+});
+
+// Subscribing to the hot observable (second subscriber)
+const subscription2 = hotObservable.subscribe(value => {
+  console.log('Subscriber 2 received:', value);
+});
+
+// Unsubscribing from the hot observable (first subscriber)
+subscription1.unsubscribe();
+```
+
 # Differences between Promises and Observable:
 
 ## Example with Promises (Single Value):
