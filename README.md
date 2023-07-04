@@ -10,7 +10,11 @@ https://indepth.dev/reference/rxjs/operators/merge
 
 
 /*
+
 unicast 1 to 1
+
 multicast 1 to many
+
 broadcast - 1 to all
+
 */
