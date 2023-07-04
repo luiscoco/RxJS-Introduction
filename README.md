@@ -15,6 +15,37 @@ Observables represent a stream of values over time. They can be either cold or h
 ## Cold Observable:
 A cold observable starts producing values only when a subscription is made, and each subscriber receives its own independent stream of values.
 
+```javascript
+import { Observable } from 'rxjs';
+
+// Creating a cold observable
+const coldObservable = new Observable(observer => {
+  let count = 0;
+  const interval = setInterval(() => {
+    observer.next(count);
+    count++;
+  }, 1000);
+
+  // Clean up the interval on unsubscribe
+  return () => {
+    clearInterval(interval);
+  };
+});
+
+// Subscribing to the cold observable (first subscriber)
+const subscription1 = coldObservable.subscribe(value => {
+  console.log('Subscriber 1 received:', value);
+});
+
+// Subscribing to the cold observable (second subscriber)
+const subscription2 = coldObservable.subscribe(value => {
+  console.log('Subscriber 2 received:', value);
+});
+
+// Unsubscribing from the cold observable (first subscriber)
+subscription1.unsubscribe();
+```
+
 ## Hot Observable:
 A hot observable starts producing values immediately, regardless of subscriptions. All subscribers share the same stream of values.
 
