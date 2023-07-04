@@ -667,14 +667,16 @@ source.subscribe(value => {
 
 Output:
 
-css
-Copy code
 A
+
 B
+
 C
-range: Emits a sequence of numbers within a specified range.
-javascript
-Copy code
+
+### range: 
+Emits a sequence of numbers within a specified range.
+
+```javascript
 import { range } from 'rxjs';
 
 const source = range(1, 5);
@@ -682,45 +684,45 @@ const source = range(1, 5);
 source.subscribe(value => {
   console.log(value);
 });
+```
+
 Output:
 
-Copy code
 1
+
 2
+
 3
+
 4
+
 5
-take: Emits only the first n values emitted by the source observable and then completes.
-javascript
-Copy code
+
+### take: 
+Emits only the first n values emitted by the source observable and then completes.
+
+```javascript
 import { of } from 'rxjs';
 import { take } from '
-
-
-
-
-User
-please continue
-ChatGPT
-rxjs/operators';
 
 const source = of(1, 2, 3, 4, 5);
 
 source.pipe(take(3)).subscribe(value => {
 console.log(value);
 });
+```
 
-makefile
-Copy code
 Output:
+
 1
+
 2
+
 3
 
-sql
-Copy code
+### tap: 
+Allows you to perform side effects for each value emitted by the source observable without modifying the value. It is often used for debugging or logging purposes.
 
-10. `tap`: Allows you to perform side effects for each value emitted by the source observable without modifying the value. It is often used for debugging or logging purposes.
 ```javascript
 import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -738,22 +740,32 @@ source.pipe(
 ).subscribe(value => {
   console.log(value);
 });
+```
+
 Output:
 
-makefile
-Copy code
 Before: 1
+
 After: 2
+
 2
+
 Before: 2
+
 After: 4
+
 4
+
 Before: 3
+
 After: 6
+
 6
-timer: Creates an observable that emits a single value after a specified delay.
-javascript
-Copy code
+
+### timer: 
+Creates an observable that emits a single value after a specified delay.
+
+```javascript
 import { timer } from 'rxjs';
 
 const source = timer(2000); // Emits after 2 seconds
@@ -761,12 +773,14 @@ const source = timer(2000); // Emits after 2 seconds
 source.subscribe(() => {
   console.log('Timer complete!');
 });
+```
+
 Output:
 
-scss
-Copy code
 Timer complete! (after 2 seconds)
-withLatestFrom: Combines the latest values from the source observable with the latest values from other observables, using a provided projection function, and emits the projected values.
+
+### withLatestFrom: 
+Combines the latest values from the source observable with the latest values from other observables, using a provided projection function, and emits the projected values.
 
 ```javascript
 import { interval, timer } from 'rxjs';
