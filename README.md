@@ -9,6 +9,13 @@ https://thinkrx.io/rxjs/
 
 https://indepth.dev/reference/rxjs/operators/merge
 
+# Note: 
+unicast 1 to 1
+
+multicast 1 to many
+
+broadcast - 1 to all
+
 # Promises:
 In JavaScript, a promise is an object that represents the eventual completion or failure of an asynchronous operation. It is commonly used when working with asynchronous code, such as fetching data from a server or performing an operation that takes time to complete. Promises provide a way to handle the result of an asynchronous operation when it becomes available.
 
@@ -242,10 +249,51 @@ class PromiseMulticast {
 }
 ```
 
-## observables: unicast (cold)
+## Observables: unicast (cold)
 
+In the context of reactive programming, observables are a fundamental concept. An observable represents a stream of data that can be observed by subscribers, who can react to the emitted values. Observables can be categorized based on various characteristics, one of which is unicast or multicast behavior.
 
-## observables: multicast (hot)
+Unicast observables, also known as cold observables, follow a one-to-one relationship between the producer (observable) and the consumer (subscriber). Each subscriber receives its own independent stream of data. When a subscriber subscribes to a unicast observable, it triggers the execution of the observable from the beginning, and the data stream is generated specifically for that subscriber.
+
+Let's consider an example to illustrate a unicast (cold) observable in JavaScript using the RxJS library:
+
+```javascript
+// Import the necessary modules
+const { Observable } = require('rxjs');
+
+// Create a unicast (cold) observable
+const observable = new Observable((subscriber) => {
+  // Emit three values asynchronously with a delay
+  setTimeout(() => {
+    subscriber.next('Value 1');
+  }, 1000);
+
+  setTimeout(() => {
+    subscriber.next('Value 2');
+  }, 2000);
+
+  setTimeout(() => {
+    subscriber.next('Value 3');
+    subscriber.complete(); // Complete the observable
+  }, 3000);
+});
+
+// Subscriber 1
+observable.subscribe({
+  next: (value) => console.log(`Subscriber 1 received: ${value}`),
+  complete: () => console.log('Subscriber 1 completed'),
+});
+
+// Subscriber 2
+setTimeout(() => {
+  observable.subscribe({
+    next: (value) => console.log(`Subscriber 2 received: ${value}`),
+    complete: () => console.log('Subscriber 2 completed'),
+  });
+}, 1500);
+```
+
+## Observables: multicast (hot)
 
 
 
@@ -275,10 +323,6 @@ class PromiseMulticast {
 ## observables have operators!
 
 
-unicast 1 to 1
 
-multicast 1 to many
-
-broadcast - 1 to all
 
 */
