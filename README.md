@@ -381,17 +381,47 @@ Subscriber 2 received: Value 3
 As you can see, both subscribers receive all the emitted values. This demonstrates the concept of a hot multicast observable in JavaScript.
 
 
-## promises: eager
+## Promises: eager
+In JavaScript, promises and observables are two different approaches for handling asynchronous operations. Promises are eager, meaning they start executing as soon as they are created, while observables can be either lazy (cold) or eager (hot). 
 
-## observables: lazy (cold), eager (hot)
+Promises (Eager):Promises are a way to handle asynchronous operations and represent the eventual completion (or failure) of an operation. They are eager because they immediately start executing when created.
+
+Here's a simple example using promises in JavaScript:
+
+```javascript
+const fetchData = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const data = 'Sample data';
+      resolve(data); // Resolve the promise with the data
+    }, 2000); // Simulate async operation with a 2-second delay
+  });
+};
+
+console.log('Before fetching data');
+
+fetchData()
+  .then(data => {
+    console.log('Fetched data:', data);
+  })
+  .catch(error => {
+    console.log('Error:', error);
+  });
+
+console.log('After fetching data');
+```
+
+
+
+## Observables: lazy (cold), eager (hot)
 
 
 
 
 
-## promises: not cancelable
+## Promises: not cancelable
 
-## observables: cancelable with unsubscribe
+## Observables: cancelable with unsubscribe
 
 
 
