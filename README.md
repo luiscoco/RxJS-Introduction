@@ -209,7 +209,7 @@ The third argument is an optional complete callback, which is called when the ob
 Finally, we use setTimeout to unsubscribe from the observable after 3 seconds by calling subscription.unsubscribe(). This stops the emission of further values and cleans up any resources used by the observable.
 
 
-## promises: multicast
+## Promises: multicast (a single Promise instance is shared among multiple consumers)
 In JavaScript, Promise multicast refers to a technique where a single Promise instance is shared among multiple consumers. This allows multiple subscribers to wait for the resolution of a Promise without triggering redundant network requests or expensive computations.
 
 By default, when you chain multiple .then() callbacks onto a Promise, each callback creates a new Promise instance. This means that if you have multiple subscribers listening for the resolution of a Promise, each subscriber triggers a separate execution path, potentially resulting in redundant operations.
@@ -242,12 +242,10 @@ class PromiseMulticast {
 }
 ```
 
+## observables: unicast (cold)
 
 
-## observables: unicast (cold), multicast (hot)
-
-
-
+## observables: multicast (hot)
 
 
 
