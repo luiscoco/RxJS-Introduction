@@ -1,4 +1,5 @@
 # rxjs--live-Sample1
+These are very important links for learning RxJS library:
 
 https://rxjs-playground.github.io/#/?html=&js=%2F%2F%20A%20simple%20illustration%20to%20count%20to%203.%0ARx.Observable.interval%281000%29.take%283%29.subscribe%28v%20%3D%3E%20console.log%28v%29%29%0A%20%20%20%20
 
@@ -9,11 +10,7 @@ https://thinkrx.io/rxjs/
 https://indepth.dev/reference/rxjs/operators/merge
 
 
-Promise function/s is only executed once.
-
-Observables function/s could be executed several times.
-
-/* Differences:
+# These are the main differences between Promises and Observable:
 
 promises: single value
 
