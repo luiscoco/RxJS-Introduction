@@ -2,6 +2,8 @@
 
 This is the official RxJS site web page: https://rxjs.dev/guide/observable
 
+RxJS marbles diagrams: https://rxmarbles.com/
+
 These are very important links for learning RxJS library:
 
 https://rxjs-playground.github.io/#/?html=&js=%2F%2F%20A%20simple%20illustration%20to%20count%20to%203.%0ARx.Observable.interval%281000%29.take%283%29.subscribe%28v%20%3D%3E%20console.log%28v%29%29%0A%20%20%20%20
